@@ -9,5 +9,14 @@ module.exports = {
   },
   discord: {
     token: process.env.DISCORD_TOKEN
+  },
+  bot: {
+    prefix: process.env.PREFIX || '/',
+    default_locale: 'en',
+    owner: {
+      id: '308715245059309569',
+      username: 'Koi',
+      discriminator: '#5558'
+    }
   }
 }
