@@ -1,0 +1,6 @@
+{
+  "greetings.hello": {
+    "en": "Hello {{username}}!",
+    "es": "Hola  {{username}}!"
+  }
+}

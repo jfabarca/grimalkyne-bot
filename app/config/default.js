@@ -11,8 +11,8 @@ module.exports = {
     token: process.env.DISCORD_TOKEN
   },
   bot: {
-    prefix: process.env.PREFIX || '/',
-    default_locale: 'en',
+    prefix: process.env.PREFIX || '.',
+    locales: ['en', 'es'],
     owner: {
       id: '308715245059309569',
       username: 'Koi',
