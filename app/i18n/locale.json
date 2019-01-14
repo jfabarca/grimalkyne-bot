@@ -1,6 +1,113 @@
 {
-  "greetings.hello": {
-    "en": "Hello {{username}}!",
-    "es": "Hola  {{username}}!"
+  "command.guild_required": {
+    "en": "⚠️ - This command can only be used in a server.",
+    "es": "⚠️ - Este comando solamente puede ser utilizado en un servidor."
+  },
+  "command.admin_only": {
+    "en": "⚠️ - You must have an admin role to use this command.",
+    "es": "⚠️ - Debes ser un administrador para utilizar este comando."
+  },
+  "command.nsfw_required": {
+    "en": "⚠️ - This command can only be used in a NSFW channel (Verify in channel settings).",
+    "es": "⚠️ - Este comando solamente puede ser utilizado en un canal de texto NSFW (Verifica en las opciones del canal)."
+  },
+  "command.args_required": {
+    "en": "⚠️ - Missing parameters are required to use this command.\n\nUse `{{prefix}}help {{command}}` to verify how to use this command.",
+    "es": "⚠️ - Debes ingresar los parámetros requeridos para usar ese comando.\n\nIngresa `{{prefix}}help {{command}}` para verificar como utilizar este comando."
+  },
+
+  "monster.size.large": {
+    "en": "Large Monster",
+    "es": ""
+  },
+  "monster.type.bird": {
+    "en": "Bird Wyvern",
+    "es": ""
+  },
+  "monster.type.brute": {
+    "en": "Brute Wyvern",
+    "es": ""
+  },
+  "monster.type.fanged": {
+    "en": "Fanged Wyvern",
+    "es": ""
+  },
+  "monster.type.flying": {
+    "en": "Flying Wyvern",
+    "es": ""
+  },
+  "monster.type.piscine": {
+    "en": "Piscine Wyvern",
+    "es": ""
+  },
+  "monster.type.elder": {
+    "en": "Elder Dragon",
+    "es": ""
+  },
+
+  "ailment.poison": {
+    "en": "Poison",
+    "es": "Veneno"
+  },
+  "ailment.stun": {
+    "en": "Stun",
+    "es": ""
+  },
+  "ailment.thunderblight": {
+    "en": "Thunderblight",
+    "es": ""
+  },
+  "ailment.fireblight": {
+    "en": "Fireblight",
+    "es": ""
+  },
+  "ailment.blastblight": {
+    "en": "Blastblight",
+    "es": ""
+  },
+  "ailment.sleep": {
+    "en": "Sleep",
+    "es": ""
+  },
+  "ailment.wind_presure": {
+    "en": "Wind Presure",
+    "es": ""
+  },
+  "ailment.bleeding": {
+    "en": "Bleeding",
+    "es": ""
+  },
+  "ailment.heat": {
+    "en": "Heat",
+    "es": ""
+  },
+  "ailment.iceblight": {
+    "en": "Iceblight",
+    "es": ""
+  },
+  "ailment.waterblight": {
+    "en": "Waterblight",
+    "es": ""
+  },
+  "ailment.paralysis": {
+    "en": "Paralysis",
+    "es": ""
+  },
+
+  "location.forest": {
+    "en": "Ancient Forest",
+    "es": ""
+  },
+  "location.desert": {
+    "en": "Wildspire Waste",
+    "es": ""
+  },
+  "location.coral": {
+    "en": "Coral Highlands",
+    "es": ""
+  },
+  "location.recess": {
+    "en": "Elder's Recess",
+    "es": ""
   }
 }

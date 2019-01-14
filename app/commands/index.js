@@ -9,7 +9,7 @@ module.exports = () => {
   let categories = readdirSync(join(__dirname, './')).filter(c => !c.includes('.'));
 
   categories.forEach(category => {
-    let files = readdirSync(join(__dirname, category)).filter(f => f.includes('.'));
+    let files = readdirSync(join(__dirname, category)).filter(f => f.endsWith('.js'));
     files.forEach(file => {
       let command = require(join(__dirname, category, file));
       command.category = category;

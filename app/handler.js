@@ -42,6 +42,8 @@ module.exports = async function(msg) {
     return await this.bot.createMessage(msg.channel.id, result);
   } else if(Array.isArray(result) && result.length > 0) {
     return await this.bot.createMessage(msg.channel.id, result[Math.floor(Math.random() * result.length)]);
+  } else if(typeof result === 'object' && result.embed) {
+    return await this.bot.createMessage(msg.channel.id, result);
   }
 
   // try {
