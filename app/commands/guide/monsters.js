@@ -36,7 +36,21 @@ module.exports = new Command({
         },
         {
           name: 'Weaknesses',
-          value: monster.weaknesses.map(x => ``).join(', ')
+          value: monster.weaknesses.map(x => {
+            let label = `${i18n.__(x.element)} `;
+            for(let i = 0; i < x.quantity; i+=1) {
+              label += '☆';
+            }
+            return label;
+          }).join(', ')
+        },
+        {
+          name: 'Resistances',
+          value: monster.resistances.map(x => i18n.__(x)).join(', ')
+        },
+        {
+          name: 'Ailments',
+          value: monster.ailments.map(x => i18n.__(x)).join(', ')
         }
       ]
     }

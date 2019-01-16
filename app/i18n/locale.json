@@ -54,15 +54,27 @@
     "es": ""
   },
   "ailment.thunderblight": {
-    "en": "Thunderblight",
+    "en": "ThunderBlight",
     "es": ""
   },
   "ailment.fireblight": {
-    "en": "Fireblight",
+    "en": "FireBlight",
     "es": ""
   },
   "ailment.blastblight": {
-    "en": "Blastblight",
+    "en": "BlastBlight",
+    "es": ""
+  },
+  "ailment.iceblight": {
+    "en": "IceBlight",
+    "es": ""
+  },
+  "ailment.waterblight": {
+    "en": "WaterBlight",
+    "es": ""
+  },
+  "ailment.dragonblight": {
+    "en": "DragonBlight",
     "es": ""
   },
   "ailment.sleep": {
@@ -81,16 +93,16 @@
     "en": "Heat",
     "es": ""
   },
-  "ailment.iceblight": {
-    "en": "Iceblight",
-    "es": ""
-  },
-  "ailment.waterblight": {
-    "en": "Waterblight",
-    "es": ""
-  },
   "ailment.paralysis": {
     "en": "Paralysis",
+    "es": ""
+  },
+  "ailment.tremor": {
+    "en": "Tremor",
+    "es": ""
+  },
+  "ailment.roar": {
+    "en": "Roar",
     "es": ""
   },
 
@@ -109,5 +121,27 @@
   "location.recess": {
     "en": "Elder's Recess",
     "es": ""
+  },
+
+  "small": {
+    "en": "small",
+    "es": ""
+  },
+  "large": {
+    "en": "large",
+    "es": ""
+  },
+  "extreme": {
+    "en": "extreme",
+    "es": ""
+  },
+
+  "emoji.water": {
+    "en": "<:water:527947993660522515>",
+    "es": "<:water:527947993660522515>"
+  },
+  "emoji.fire": {
+    "en": "<:fire:527947884805619713>",
+    "es": "<:fire:527947884805619713>"
   }
 }

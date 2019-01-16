@@ -10,22 +10,25 @@
     ],
     "weaknesses": [
       {
-        "element": "element.water",
-        "quantity": "3"
+        "element": "emoji.water",
+        "quantity": 3
       },
       {
         "element": "element.thunder",
-        "quantity": "2"
+        "quantity": 2
       },
       {
         "element": "element.ice",
-        "quantity": "2"
+        "quantity": 2
       }
     ],
     "resistances": [
-      "element.fire"
+      "emoji.fire"
     ],
     "ailments": [
+      "{{ailment.roar}} ({{small}})",
+      "{{ailment.wind_presure}} ({{small}})",
+      "{{ailment.tremor}} ({{small}})",
       "ailment.fireblight"
     ]
   }
