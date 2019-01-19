@@ -13,6 +13,16 @@ module.exports = new Command({
     return i18n.__('monsters.not_found', { arg: args[0] });
   }
 
+  const weaknesses = [];
+  for(let i = 0; i < monster.weaknesses.length; i+=2) {
+    let w1 = monster.weaknesses[i];
+    let w2 = monster.weaknesses[i+1];
+    weaknesses.push(
+      `${i18n.__(w1.element)} ` + ('★'.repeat(w1.quantity)).padEnd(3, '☆') +
+      ` ${i18n.__(w2.element)} ` + ('★'.repeat(w2.quantity)).padEnd(3, '☆')
+    );
+  }
+
   return {
     embed: {
       author: {
@@ -24,11 +34,13 @@ module.exports = new Command({
       fields: [
         {
           name: 'Size',
-          value: i18n.__(monster.size)
+          value: i18n.__(monster.size),
+          inline: true
         },
         {
           name: 'Type',
-          value: i18n.__(monster.type)
+          value: i18n.__(monster.type),
+          inline: true
         },
         {
           name: 'Locations',
@@ -36,21 +48,13 @@ module.exports = new Command({
         },
         {
           name: 'Weaknesses',
-          value: monster.weaknesses.map(x => {
-            let label = `${i18n.__(x.element)} `;
-            for(let i = 0; i < x.quantity; i+=1) {
-              label += '☆';
-            }
-            return label;
-          }).join(', ')
-        },
-        {
-          name: 'Resistances',
-          value: monster.resistances.map(x => i18n.__(x)).join(', ')
+          value: weaknesses.join('\n'),
+          inline: true
         },
         {
           name: 'Ailments',
-          value: monster.ailments.map(x => i18n.__(x)).join(', ')
+          value: monster.ailments.map(x => i18n.__(x)).join('\n'),
+          inline: true
         }
       ]
     }

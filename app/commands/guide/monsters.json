@@ -10,20 +10,45 @@
     ],
     "weaknesses": [
       {
+        "element": "emoji.fire",
+        "quantity": 0
+      },
+      {
+        "element": "emoji.poison",
+        "quantity": 1
+      },
+      {
         "element": "emoji.water",
         "quantity": 3
       },
       {
-        "element": "element.thunder",
+        "element": "emoji.sleep",
         "quantity": 2
       },
       {
-        "element": "element.ice",
+        "element": "emoji.thunder",
+        "quantity": 2
+      },
+      {
+        "element": "emoji.paralysis",
+        "quantity": 2
+      },
+      {
+        "element": "emoji.ice",
+        "quantity": 2
+      },
+      {
+        "element": "emoji.blast",
+        "quantity": 1
+      },
+      {
+        "element": "emoji.dragon",
+        "quantity": 2
+      },
+      {
+        "element": "emoji.stun",
         "quantity": 2
       }
-    ],
-    "resistances": [
-      "emoji.fire"
     ],
     "ailments": [
       "{{ailment.roar}} ({{small}})",
