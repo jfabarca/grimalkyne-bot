@@ -9,11 +9,13 @@ const join = require('path').join;
 
 class App {
   constructor() {
+    this.config = config;
     this.eris = new Client(config.discord.token);
 
     this.eris.on('warn', warn => logger.warn('Eris warn: %s', warn));
     this.eris.on('error', error => logger.warn('Eris error: %s', error));
     this.eris.on('disconnect', () => logger.warn('Bot disconnected'));
+    this.eris.on('messageCreate', handler.bind(this));
     this.eris.on('ready', () =>
       logger.info(
         [
@@ -25,13 +27,10 @@ class App {
           ` |  - ${this.eris.guilds.size} servers. ${
             this.eris.users.filter(u => !u.bot).length
           } users.`,
-          ` |  - ${this.eris.relationships.size} friends. ${
-            this.eris.relationships.filter(u => u.status !== 'offline').length
-          } online.`
+          ` =============================================`
         ].join('\n')
       )
     );
-    // this.eris.on('messageCreate', handler.bind(this));
 
     // this.i18n = {};
     // this.config = config;
