@@ -1,9 +1,9 @@
-const fs        = require('fs');
-const path      = require('path');
-const defaults  = require('./default');
+const fs = require('fs');
+const path = require('path');
+const defaults = require('./default');
 
-let envConfigFile = path.normalize(`${__dirname}/${process.env.NODE_ENV || 'development'}.js`);
+const envFile = path.join(__dirname, process.env.NODE_ENV);
 
-let envConfig = fs.existsSync(envConfigFile) && require(envConfigFile);
-
-module.exports = envConfig ? { ...defaults, ...envConfig } : defaults;
+module.exports = fs.existsSync(envFile)
+  ? { ...defaults, ...require(envFile) }
+  : defaults;

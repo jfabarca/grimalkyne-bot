@@ -1,7 +1,8 @@
-const version   = require('../../package.json').version;
+const version = require('../../package.json').version;
 
 module.exports = {
   env: process.env.NODE_ENV || 'development',
+  isProduction: process.env.NODE_ENV === 'production',
   version,
   port: process.env.PORT || 8080,
   logger: {
@@ -11,12 +12,12 @@ module.exports = {
     token: process.env.DISCORD_TOKEN
   },
   bot: {
-    prefix: process.env.PREFIX || '.',
-    locales: ['en', 'es'],
+    prefix: process.env.PREFIX || ',',
+    // locales: ['en', 'es'],
     owner: {
       id: '308715245059309569',
       username: 'Koi',
       discriminator: '#5558'
     }
   }
-}
+};
