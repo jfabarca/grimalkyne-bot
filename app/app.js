@@ -54,11 +54,7 @@ class App {
   }
 
   async start() {
-    try {
-      await this.eris.connect();
-    } catch (error) {
-      logger.error('Connection failed: %s', error.message);
-    }
+    await this.eris.connect();
   }
 
   stop() {

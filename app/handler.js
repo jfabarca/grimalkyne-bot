@@ -26,7 +26,7 @@ const handler = async function(msg) {
     .split(/\s+/g)
     .slice(1);
 
-  this.eris.createMessage(msg.channel.id, 'Hello');
+  this.eris.createMessage(msg.channel.id, `${command} ${args}`);
 };
 
 module.exports = handler;

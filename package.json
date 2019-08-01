@@ -10,6 +10,10 @@
     "dev": "nodemon ./app/index",
     "lint": "node node_modules/eslint/bin/eslint.js --fix ./app && echo 'Lint complete.'"
   },
+  "engines": {
+    "node": "12.x",
+    "npm": "*"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jfabarca/grimalkyne-bot.git"
