@@ -1,30 +1,32 @@
 const { join } = require('path');
 const { readdirSync } = require('fs');
+const logger = require('../utils/logger');
 
 const commands = {
   aliases: {}
 };
+const categories = readdirSync(__dirname).filter(f => !f.includes('.'));
 
-module.exports = () => {
-  let categories = readdirSync(join(__dirname, './')).filter(c => !c.includes('.'));
+categories.forEach(dir => {
+  const category = require(join(__dirname, dir));
+  category.commands.forEach(cmd => {
+    const trigger = cmd.settings.triggers[0];
+    const aliases = cmd.settings.triggers.slice(1);
 
-  categories.forEach(category => {
-    let files = readdirSync(join(__dirname, category)).filter(f => f.endsWith('.js'));
-    files.forEach(file => {
-      let command = require(join(__dirname, category, file));
-      command.category = category;
-      let trigger = command.settings.triggers[0];
-      let aliases = command.settings.triggers.slice(1);
-      if(!commands[trigger]) {
-        commands[trigger] = command;
+    if (commands[trigger]) {
+      logger.error(`Command '${trigger}' is already registered!`);
+      process.exit(1);
+    }
+    commands[trigger] = cmd;
+
+    aliases.forEach(alias => {
+      if (commands.aliases[alias]) {
+        logger.error(`Command with alias '${alias}' is already registered!`);
+        process.exit(1);
       }
-      aliases.forEach(alias => {
-        if(!commands.aliases[alias]) {
-          commands.aliases[alias] = command;
-        }
-      });
+      commands.aliases[alias] = cmd;
     });
   });
+});
 
-  return commands;
-};
+module.exports = commands;

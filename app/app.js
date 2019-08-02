@@ -1,14 +1,14 @@
 const { Client } = require('eris');
-const { logger } = require('./utils');
 const moment = require('moment');
+const logger = require('./utils/logger');
 const config = require('./config');
 const handler = require('./handler');
 const commands = require('./commands');
 const i18n_module = require('i18n-nodejs');
-const join = require('path').join;
 
 class App {
   constructor() {
+    this.commands = commands;
     this.config = config;
     this.eris = new Client(config.discord.token);
 

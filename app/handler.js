@@ -1,4 +1,5 @@
-const { logger } = require('./utils');
+const logger = require('./utils/logger');
+const { AppError } = require('./utils/errors');
 
 const handler = async function(msg) {
   if (msg.author.bot || !msg.channel.guild) {
@@ -20,13 +21,44 @@ const handler = async function(msg) {
     ? `@${selfMember.nick || selfMember.username}`.length + 1
     : prefix.length;
 
-  const [command, ...args] = msg.content.slice(prefixLength).split(/\s+/g);
+  const [srcCommand, ...args] = msg.content.slice(prefixLength).split(/\s+/g);
   const cleanArgs = msg.cleanContent
     .slice(cleanPrefixLength)
     .split(/\s+/g)
     .slice(1);
 
-  this.eris.createMessage(msg.channel.id, `${command} ${args}`);
+  const command =
+    srcCommand &&
+    (this.commands[srcCommand] || this.commands.aliases[srcCommand]);
+
+  if (
+    !command ||
+    (command.settings.ownerOnly && command.settings.ownerOnly !== isOwner)
+  ) {
+    return;
+  }
+
+  try {
+    const response = await command.run({ app: this, msg, args, cleanArgs });
+
+    if (!response) {
+      return;
+    } else if (typeof response === 'string') {
+      return await this.eris.createMessage(msg.channel.id, response);
+    } else if (Array.isArray(response) && response.length) {
+      return await this.eris.createMessage(
+        msg.channel.id,
+        response[Math.floor(Math.random() * response.length)]
+      );
+    } else if (
+      typeof response === 'object' &&
+      typeof response.embed === 'object'
+    ) {
+      return await this.eris.createMessage(msg.channel.id, response);
+    }
+  } catch (err) {
+    logger.error(err.stack);
+  }
 };
 
 module.exports = handler;
