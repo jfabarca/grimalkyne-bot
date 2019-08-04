@@ -62,10 +62,10 @@ class Command {
     const requiredPermissions = this.settings.permissions.filter(
       permission => !channelPermissions.has(permission)
     );
-    console.log(requiredPermissions);
+
     if (requiredPermissions.length && channelPermissions.has('sendMessages')) {
       return i18n.translate('permissions_required', {
-        permissions: requiredPermissions.map(p => '`' + p + '`').join(', '),
+        permissions: requiredPermissions.map(p => `\`${p}\``).join(', '),
         bot: app.eris.user.username
       });
     }
