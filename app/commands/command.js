@@ -1,5 +1,3 @@
-const { CommandValidationError } = require('../utils/errors');
-
 class Command {
   constructor(settings, fn) {
     this.fn = fn;
@@ -31,46 +29,46 @@ class Command {
       return this.subCommands[subCommand].run(params);
     }
 
-    this.isValid(params);
+    const message = this.validate(params);
+    if (message) {
+      return message;
+    }
 
     return this.fn(params);
   }
 
-  isValid({ msg, args, i18n, prefix }) {
+  validate({ app, msg, args, i18n, prefix }) {
     if (this.settings.guildOnly && !msg.channel.guild) {
-      // return i18n.__('command.guild_required');
-      throw new CommandValidationError('This command is for guilds only!');
+      return i18n.translate('command.guild_required');
     } else if (
       this.settings.adminOnly &&
       !msg.member.permission.has('administrator')
     ) {
-      // return i18n.__('command.admin_only');
-      throw new CommandValidationError('Admin only!');
+      return i18n.translate('command.admin_only');
     } else if (this.settings.isNSFW && !msg.channel.nsfw) {
-      // return i18n.__('command.nsfw_required');
-      throw new CommandValidationError('NSFW only!');
+      return i18n.translate('command.nsfw_required');
     } else if (this.settings.argsRequired && args.length === 0) {
-      // return i18n.__('command.args_required', { prefix, command: this.settings.triggers[0] });
-      throw new CommandValidationError(`Args required!`);
+      return i18n.translate('command.args_required', {
+        prefix,
+        command: this.settings.triggers[0]
+      });
     }
-    // Validate command permissions for guild
-    // let permissions = msg.channel.guild && msg.channel.permissionsOf(bot.user.id);
-    //
-    // if(permissions) {
-    //   let requiredPermissions = [];
-    //   properties.permissions.forEach(p => !permissions.has(p) && requiredPermissions.push(p));
-    //
-    //   if(requiredPermissions.length > 0) {
-    //     if(permissions.has('sendMessages')) {
-    //       return i18n.__('permissions_required', {
-    //         operator: msg.author.mention,
-    //         permissions: requiredPermissions.map(p => '`'+p+'`').join(', '),
-    //         bot_username: bot.user.username
-    //       });
-    //     }
-    //   }
-    // }
-    // return false;
+    // Validate bot permissions for this channel
+    if (!msg.channel.guild) {
+      return;
+    }
+    const channelPermissions = msg.channel.permissionsOf(app.eris.user.id);
+
+    const requiredPermissions = this.settings.permissions.filter(
+      permission => !channelPermissions.has(permission)
+    );
+    console.log(requiredPermissions);
+    if (requiredPermissions.length && channelPermissions.has('sendMessages')) {
+      return i18n.translate('permissions_required', {
+        permissions: requiredPermissions.map(p => '`' + p + '`').join(', '),
+        bot: app.eris.user.username
+      });
+    }
   }
 
   registerSubCommand(trigger, fn, srcSettings = {}) {

@@ -11,9 +11,9 @@ module.exports = {
   discord: {
     token: process.env.DISCORD_TOKEN
   },
+  locales: ['es', 'en'],
   bot: {
     prefix: process.env.PREFIX || ',',
-    // locales: ['en', 'es'],
     owner: {
       id: '308715245059309569',
       username: 'Koi',

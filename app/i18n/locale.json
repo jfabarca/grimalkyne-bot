@@ -12,8 +12,12 @@
     "es": "⚠️ - Este comando solamente puede ser utilizado en un canal de texto NSFW (Verifica en las opciones del canal)."
   },
   "command.args_required": {
-    "en": "⚠️ - Missing parameters are required to use this command.\n\nUse `{{prefix}}help {{command}}` to verify how to use this command.",
-    "es": "⚠️ - Debes ingresar los parámetros requeridos para usar ese comando.\n\nIngresa `{{prefix}}help {{command}}` para verificar como utilizar este comando."
+    "en": "⚠️ - Missing parameters are required to use this command.\n\nUse `{{prefix}}help {{trigger}}` to verify how to use this command.",
+    "es": "⚠️ - Debes ingresar los parámetros requeridos para usar ese comando.\n\nIngresa `{{prefix}}help {{trigger}}` para verificar como utilizar este comando."
+  },
+  "permissions_required": {
+    "en": "❌ - I require the following permissions to execute this command: {{permissions}}\n\nGo to **Server settings > Roles > {{bot}}** and enable the required permissions.",
+    "es": "❌ - Debes habilitar los siguientes permisos para usar este comando: {{permissions}}\n\n Ve a **Opciones de servidor > Roles > {{bot}}** y habilita los permisos necesarios."
   },
 
   "monster.size.large": {
